@@ -5,18 +5,19 @@ import buildDeck from './buildDeck';
 const CardPresenter = (props) => {
 	let cards = buildDeck();
 
-	function drawCard(image) {
-			return (
-			<Card title="Card" style={{ height: 10 }} bodyStyle={{ padding: 0 }}>
-				<img src={cards[0]} />
-			</Card>
-			);
-		};
+	let deck = cards.map(function(card) {
+		return	<Card title="" style={{ height: 10 }} bodyStyle={{ padding: 0 }}>
+					<img src={'.\\cards\\' + card}  />
+				</Card>
+	});
 
 	return (
-			<Card title="Card" style={{ height: 10 }} bodyStyle={{ padding: 0 }}>
-				<img src={'.\\cards\\' + cards[0]} />
-			</Card>
+		<div>
+			{deck}
+		</div>
+			// <Card title="Card" style={{ height: 10 }} bodyStyle={{ padding: 0 }}>
+			// 	<img src={'.\\cards\\' + cards[0]} />
+			// </Card>
 		);
 };
 
