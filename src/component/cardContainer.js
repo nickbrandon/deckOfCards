@@ -1,39 +1,52 @@
-import React from 'react';
+import React, {Component} from 'react';
 import CardPresenter from './CardPresenter';
 import buildDeck from './buildDeck';
-import { Card } from 'antd';
+import { Button } from 'antd';
 
-function knuthShuffle(array) {
-	var currentIndex = array.length, temporaryValue, randomIndex;
+class CardContainer extends Component {
+	constructor(props) {
+		super(props);
 
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
+		this.state = {
+			mappedDeck: {}
+		}
+	}
+	
+	knuthShuffle = (array) => {
+		var currentIndex = array.length,
+			temporaryValue, randomIndex;
 
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
+		while (0 !== currentIndex) {
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
 	}
 
-	return array;
-}
+	deck = () => {
+		this.state.mappedDeck = buildDeck().map(function(card) {
+		return	<div style={ {height: 100} }>
+					<img height="100px" src={'.\\cards\\' + card}  />
+				</div>
+		});
+	}
 
-let cards = buildDeck();
+	render () {
+	this.deck();
 
-let deck = cards.map(function(card) {
-	return	<div>
-				<Card title="" >
-					<div style={ {height: 100} }>
-						<img height="100px" src={'.\\cards\\' + card}  />
-					</div>
-				</Card>
-			</div>
-	});
-
-const CardContainer = () => {
 	return (
-		<CardPresenter deck={deck}/>
+		<div>
+			<CardPresenter deck={this.state.mappedDeck}/>
+			<Button type="default">Shuffle></Button>
+			<Button type="default" >Sort></Button>
+		</div>
 		);
+}
 };
 
 export default CardContainer;
