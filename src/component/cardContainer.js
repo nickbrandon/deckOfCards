@@ -55,7 +55,7 @@ class CardContainer extends Component {
 	}
 
 	sortDeck = () => {
-		let sortedListOfCards = this.cardList().sort();
+		let sortedListOfCards = this.cardList();
 		let sorted = this.mapCards(sortedListOfCards);
 		this.setState({
 			mappedDeck: sorted
