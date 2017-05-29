@@ -13,6 +13,10 @@ class CardContainer extends Component {
 
 		this.createDeck();
 	}
+
+	cardList = () => {
+		return cards();
+	};
 	
 	knuthShuffle = (array) => {
 		var currentIndex = array.length,
@@ -30,19 +34,32 @@ class CardContainer extends Component {
 		return array;
 	}
 
-	createDeck = () => {
-		this.state.mappedDeck = cards().map(function(card) {
-		return	<div style={ {height: 100} }>
+	mapCards = (cards) => {
+		return cards.map(function(card) {
+		return	<div key={card} style={ {height: 100} }>
 					<img height="100px" src={'.\\cards\\' + card}  />
 				</div>
 		});
 	}
 
+	createDeck = () => {
+		let tempCards = this.mapCards(this.cardList());
+		this.state.mappedDeck = tempCards;
+	}
+
 	shuffleDeck = () => {
-		let shuffled = this.knuthShuffle(this.state.mappedDeck);
+		let shuffled = this.knuthShuffle(this.mapCards(this.cardList()));
 		this.setState({
 			mappedDeck: shuffled
 		});
+	}
+
+	sortDeck = () => {
+		let sortedListOfCards = this.cardList().sort();
+		let sorted = this.mapCards(sortedListOfCards);
+		this.setState({
+			mappedDeck: sorted
+		})
 	}
 
 	render () {
@@ -50,7 +67,7 @@ class CardContainer extends Component {
 		<div>
 			<CardPresenter deck={this.state.mappedDeck}/>
 			<Button type="default" onClick={this.shuffleDeck}>Shuffle></Button>
-			<Button type="default" >Sort></Button>
+			<Button type="default" onClick={this.sortDeck}>Sort></Button>
 		</div>
 		);
 }
