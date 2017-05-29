@@ -12,10 +12,11 @@ const CardPresenter = (props) => {
 			</Card>
 			);
 		};
-	}
 
 	return (
-			cards.map(drawCard);
+			<Card title="Card" style={{ height: 10 }} bodyStyle={{ padding: 0 }}>
+				<img src={'.\\cards\\' + cards[0]} />
+			</Card>
 		);
 };
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardContainer from './component/cardContainer.js';
+import CardContainer from './component/CardContainer.js';
 import logo from './logo.svg';
 import './App.css';
 
