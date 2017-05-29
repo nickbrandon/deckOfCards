@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CardContainer from './component/CardContainer.js';
-import logo from './logo.svg';
+import logo from './red_joker.png';
 import './App.css';
 
 class App extends Component {

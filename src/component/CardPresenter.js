@@ -6,18 +6,19 @@ const CardPresenter = (props) => {
 	let cards = buildDeck();
 
 	let deck = cards.map(function(card) {
-		return	<Card title="" style={{ height: 10 }} bodyStyle={{ padding: 0 }}>
-					<img src={'.\\cards\\' + card}  />
+		return	<div>
+				<Card title="" >
+					<div style={ {height: 100} }>
+						<img height="100px" src={'.\\cards\\' + card}  />
+					</div>
 				</Card>
+				</div>
 	});
 
 	return (
-		<div>
+		<div className="cardList">
 			{deck}
 		</div>
-			// <Card title="Card" style={{ height: 10 }} bodyStyle={{ padding: 0 }}>
-			// 	<img src={'.\\cards\\' + cards[0]} />
-			// </Card>
 		);
 };
 
