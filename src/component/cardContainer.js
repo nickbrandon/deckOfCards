@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CardPresenter from './CardPresenter';
-import buildDeck from './buildDeck';
+import cards from './buildDeck';
 import { Button } from 'antd';
 
 class CardContainer extends Component {
@@ -10,6 +10,8 @@ class CardContainer extends Component {
 		this.state = {
 			mappedDeck: {}
 		}
+
+		this.createDeck();
 	}
 	
 	knuthShuffle = (array) => {
@@ -28,21 +30,26 @@ class CardContainer extends Component {
 		return array;
 	}
 
-	deck = () => {
-		this.state.mappedDeck = buildDeck().map(function(card) {
+	createDeck = () => {
+		this.state.mappedDeck = cards().map(function(card) {
 		return	<div style={ {height: 100} }>
 					<img height="100px" src={'.\\cards\\' + card}  />
 				</div>
 		});
 	}
 
-	render () {
-	this.deck();
+	shuffleDeck = () => {
+		let shuffled = this.knuthShuffle(this.state.mappedDeck);
+		this.setState({
+			mappedDeck: shuffled
+		});
+	}
 
+	render () {
 	return (
 		<div>
 			<CardPresenter deck={this.state.mappedDeck}/>
-			<Button type="default">Shuffle></Button>
+			<Button type="default" onClick={this.shuffleDeck}>Shuffle></Button>
 			<Button type="default" >Sort></Button>
 		</div>
 		);

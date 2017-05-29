@@ -1,4 +1,4 @@
-export default function buildDeck() {
+export default function cards() {
 	return [
 		"10_of_clubs.png",
 		"10_of_diamonds.png",
