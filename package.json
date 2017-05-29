@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "antd": "^2.10.2",
+    "enzyme": "^2.8.2",
     "glob": "^7.1.2",
     "react": "^15.5.4",
+    "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {

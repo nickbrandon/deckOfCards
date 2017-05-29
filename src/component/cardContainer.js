@@ -66,7 +66,7 @@ class CardContainer extends Component {
 	return (
 		<div>
 			<CardPresenter deck={this.state.mappedDeck}/>
-			<Button type="default" onClick={this.shuffleDeck}>Shuffle></Button>
+			<Button type="default" style={{margin: 10}} onClick={this.shuffleDeck}>Shuffle></Button>
 			<Button type="default" onClick={this.sortDeck}>Sort></Button>
 		</div>
 		);
