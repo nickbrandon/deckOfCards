@@ -31,8 +31,10 @@ describe('CardContainer', () => {
 	
 		it('shuffles the deck', () => {
 			let originalDeck = cards.slice();
-			let shuffledDeck = cardContainer.instance().knuthShuffle(cards);
-			expect(shuffledDeck).toEqual(expect.arrayContaining(originalDeck));
-			expect(shuffledDeck === originalDeck).toBeFalsy();
+			let deckToShuffle = cards.slice();
+
+			cardContainer.instance().knuthShuffle(deckToShuffle);
+			expect(deckToShuffle).toEqual(expect.arrayContaining(originalDeck));
+			expect(deckToShuffle === originalDeck).toBeFalsy();
 		});
 });
