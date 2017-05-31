@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CardPresenter from './CardPresenter';
-import cards from './buildDeck';
+import cards from './BuildDeck';
 import { Button } from 'antd';
 
 class CardContainer extends Component {
